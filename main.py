@@ -27,18 +27,36 @@ def solver(a,b,c,determinant):
       solution_1 = f"{-b/(2*a)} + {(determinant)}**0.5/{(2*a)}"
       solution_2 = f"{-b/(2*a)} - {(determinant)}**0.5/{(2*a)}"
   if determinant <0:
-    x = str(determinant**0.5)
-    x = x.split("+")
-    x = x[1]
-    x = int(x.replace('j)',""))
-    solution_1 = f"{-b/(2*a)} + {x/(2*a)}i"
-    solution_2 = f"{-b/(2*a)} - {x/(2*a)}i"
+    if isinstance((-determinant)**(0.5), int) is True:
+      x = int((-determinant)**(0.5))
+      print(determinant, x)
+      x = str(int((determinant))**(0.5))
+      print(determinant, x)
+      x = x.split("+")
+      x = x[1]
+      x = x.replace('j)',"")
+      solution_1 = f"{-b/(2*a)} + {x/(2*a)}i"
+      solution_2 = f"{-b/(2*a)} - {x/(2*a)}i"
+    else:
+      if isinstance((determinant/(4*a**2)),int) is True:
+        determinant = int(determinant/(4*a**2))
+        solution_1 = f"{-b/(2*a)} + i√{-determinant}"
+        solution_2 = f"{-b/(2*a)} - i√{-determinant}"
+      try:
+        determinant = int(determinant/4)
+        solution_1 = f"{-b/(2*a)} + i√{(determinant)}/{(a)}"
+        solution_2 = f"{-b/(2*a)} - i√{(determinant)}/{(a)}"
+      except ValueError:
+        solution_1 = f"{-b/(2*a)} + i√{(determinant)}/{(2*a)}"
+        solution_2 = f"{-b/(2*a)} - i√{(determinant)}/{(2*a)}"
     count += 1
   return solution_1, solution_2, count
-
 one , two , count = solver(a,b,c, determinant)
+
+end_word = "are"
 if count == 0:
   one = f"({one},0)"
   if two != "" :
     two = f"({two},0)"
-print(f"\n{end}\nYour solutions are:\n{one}\n{two}")
+    end_word = "is"
+print(f"\n{end}\nYour solutions {end_word}:\n{one}\n{two}") 
