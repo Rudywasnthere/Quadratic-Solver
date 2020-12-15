@@ -30,9 +30,9 @@ def solver(a,b,c,determinant):
     x = str(determinant**0.5)
     x = x.split("+")
     x = x[1]
-    x = x.replace('j)', 'i')
-    solution_1 = f"{-b/(2*a)} + {x}"
-    solution_2 = f"{-b/(2*a)} - {x}"
+    x = int(x.replace('j)',""))
+    solution_1 = f"{-b/(2*a)} + {x/(2*a)}i"
+    solution_2 = f"{-b/(2*a)} - {x/(2*a)}i"
     count += 1
   return solution_1, solution_2, count
 
