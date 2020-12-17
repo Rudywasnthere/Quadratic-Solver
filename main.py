@@ -28,17 +28,15 @@ def solver(a,b,c,determinant):
       solution_1 = f"{-b/(2*a)} ± {(determinant)}**0.5/{(2*a)}"
       solution_2 = ""
   if determinant <0:
-    if isinstance((-determinant)**(0.5), int) is True:
-      x = int((-determinant)**(0.5))
+    determinant = -1*determinant
+    try:
+      determinant = int((determinant)**(0.5))
+      x = int((determinant)**(0.5))
       print(determinant, x)
       x = str(int((determinant))**(0.5))
-      print(determinant, x)
-      x = x.split("+")
-      x = x[1]
-      x = x.replace('j)',"")
       solution_1 = f"{-b/(2*a)} ± {x/(2*a)}i"
       solution_2 = ""
-    else:
+    except ValueError:
       rounded = round(1/a,6)
       rounded_2 = rounded
       if rounded == 1:
